@@ -10,7 +10,6 @@ use Core\Router; // Importa o namespace Core
 $router = new Router();
 
 // Definindo rotas
-$router->addRoute('GET', '/404', 'Controllers\erro404Controller', 'index');
 $router->addRoute('GET', '/', 'Controllers\HomeController', 'index');
 $router->addRoute('GET', '/users', 'Controllers\UserController', 'index'); // Listar usuários
 $router->addRoute('GET', '/users/create', 'Controllers\UserController', 'create'); // Criar usuário (formulário)
