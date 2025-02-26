@@ -1,4 +1,3 @@
-
 RewriteEngine On
 
 # Redireciona todas as requisições para index.php, exceto arquivos existentes

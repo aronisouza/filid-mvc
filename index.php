@@ -1,7 +1,12 @@
 <?php
 session_start();
 
-header("Content-Security-Policy: default-src 'self'; script-src 'self'; style-src 'self';");
+header("Content-Security-Policy: " .
+    "default-src 'self'; " .
+    "script-src 'self' https://cdn.jsdelivr.net 'unsafe-inline'; " .
+    "style-src 'self' https://cdn.jsdelivr.net 'unsafe-inline'; " .
+    "img-src 'self' data:;"
+);
 header("X-XSS-Protection: 1; mode=block");
 header("X-Content-Type-Options: nosniff");
 

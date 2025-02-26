@@ -11,7 +11,7 @@
     </div>
 
     <div class="form-floating mb-3">
-        <input type="password" class="form-control" id="password" name="password" placeholder="name@example.com" required>
+        <input type="password" class="form-control" id="password" name="password" required>
         <label for="password">Senha:</label>
     </div>
 
