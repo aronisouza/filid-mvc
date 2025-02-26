@@ -1,3 +1,4 @@
+<?php  ?>
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -6,7 +7,7 @@
     <title>Meu Sistema</title>
     <!-- CSS -->
     <link rel="stylesheet" href="/Public/Css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="/Public/Css/bootstrap-icons.min.css">
 </head>
 <body class="bg-success-subtle">
     <!-- Menu -->

@@ -11,15 +11,19 @@
     <tbody>
         <?php foreach ($users as $user): ?>
             <tr>
-                <td><?= $user['nome'] ?></td>
-                <td><?= $user['email'] ?></td>
+                <td><?= htmlspecialchars($user['nome']) ?></td>
+                <td><?= htmlspecialchars($user['email']) ?></td>
                 <td>
-                    <a class="btn btn-outline-primary btn-sm" href="/users/edit/<?= fldCrip($user['id'], 0) ?>"><i class="bi bi-pencil-square"></i></a>
-                    <a class="btn btn-outline-danger btn-sm" href="/users/delete/<?= fldCrip($user['id'], 0) ?>" onclick="return confirm('Tem certeza?')"><i class="bi bi-trash"></i></a>
+                    <a class="btn btn-outline-link btn-sm" href="/users/edit/<?= fldCrip($user['id'], 0) ?>">
+                        <?=fldIco("editar",'text-primary',20)?>
+                    </a>
+                    <a class="btn btn-outline-link btn-sm" href="/users/delete/<?= fldCrip($user['id'], 0) ?>" onclick="return confirm('Tem certeza?')">
+                        <?=fldIco("lixeira",'text-danger',20)?>
+                    </a>
                 </td>
             </tr>
     </tbody>
 <?php endforeach; ?>
 </table>
 
-<a class="btn btn-success btn-sm" href="/users/create"><i class="bi bi-person-plus-fill"></i> Criar Novo Usuário</a>
+<a class="btn btn-success btn-sm" href="/users/create"><?=fldIco("addUser",'text-light',20)?> Criar Novo Usuário</a>

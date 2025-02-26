@@ -24,6 +24,28 @@ class UserController extends Controller
 
     public function store()
     {
+        // Valida o token CSRF
+        if (!$this->validateCsrfToken($_POST['csrf_token'] ?? '')) {
+            http_response_code(403);
+            echo "Requisição inválida.";
+            return;
+        }
+
+        if (empty($_POST['nome']) || empty($_POST['email'])) {
+            http_response_code(400);
+            echo "Todos os campos são obrigatórios.";
+            return;
+        }
+
+        if (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
+            http_response_code(400);
+            echo "Email inválido.";
+            return;
+        }
+
+        // Remove o campo csrf_token dos dados
+        unset($_POST['csrf_token']);
+
         $_POST['password'] = fldCrip($_POST['password'], 0);
         $data = $_POST;
         $userModel = new UserModel();
@@ -52,6 +74,27 @@ class UserController extends Controller
 
     public function update($idg)
     {
+        // Valida o token CSRF
+        if (!$this->validateCsrfToken($_POST['csrf_token'] ?? '')) {
+            http_response_code(403);
+            echo "Requisição inválida.";
+            return;
+        }
+
+        if (empty($_POST['nome']) || empty($_POST['email'])) {
+            http_response_code(400);
+            echo "Todos os campos são obrigatórios.";
+            return;
+        }
+
+        if (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
+            http_response_code(400);
+            echo "Email inválido.";
+            return;
+        }
+
+        // Remove o campo csrf_token dos dados
+        unset($_POST['csrf_token']);
         $id = fldCrip($idg, 1);
         // Atualiza um usuário no banco de dados
         $data = $_POST;
@@ -71,5 +114,13 @@ class UserController extends Controller
 
         header('Location: /users');
         exit;
+    }
+
+    protected function generateCsrfToken()
+    {
+        if (empty($_SESSION['csrf_token'])) {
+            $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
+        }
+        return $_SESSION['csrf_token'];
     }
 }
