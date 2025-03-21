@@ -6,12 +6,7 @@ RewriteRule ^(.*)$ index.php?url=$1 [QSA,L]
 
 ErrorDocument 403 https://github.com/aronisouza
 
-<Files .env>
+<FilesMatch "^(\.env|autoload\.php)$">
     Order allow,deny
     Deny from all
-</Files>
-
-<Files autoload.php>
-    Order allow,deny
-    Deny from all
-</Files>
+</FilesMatch>
