@@ -1,11 +1,20 @@
 RewriteEngine On
 Options All -Indexes
 
-# Redireciona todas as requisições para index.php, exceto arquivos existentes
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME} !-l
 
-RewriteRule ^(.*)$ index.php?url=$1 [QSA,L]
+RewriteRule ^(.*) /index.php?pag=$1
 
 ErrorDocument 403 https://github.com/aronisouza
+
+<Files .env>
+    Order allow,deny
+    Deny from all
+</Files>
+
+<Files autoload.php>
+    Order allow,deny
+    Deny from all
+</Files>
