@@ -1,9 +1,5 @@
 <?php
 
-namespace App\Configs;
-
-use App\Configs\Conexao;
-
 class BackupSql extends Conexao
 {
     private $conn;

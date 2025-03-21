@@ -1,9 +1,5 @@
 <?php
 
-namespace App\Configs;
-
-use App\Configs\Conexao;
-
 class Delete extends Conexao {
 	private $Tabela;
 	private $Termos;

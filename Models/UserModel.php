@@ -1,10 +1,4 @@
 <?php
-namespace Models;
-
-use App\Configs\Read;
-use App\Configs\Create;
-use App\Configs\Update;
-use App\Configs\Delete;
 
 class UserModel {
 

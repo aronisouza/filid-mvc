@@ -1,16 +1,20 @@
 /**
  ### Exibe o alerta com mensagem customizada
- *- Icon => success, error, warning, info, question
- *- mensagem => Escreva a mensagem a ser mostrada
+ *- Icones => success, error, warning, info, question
+ *- titulo => Titulo da janela
+ *- mensagem => Escreva a mensagem a ser exibida
  *- icone => escolha um Icon acima
+ *- confirmButton => Texto do Botão
 */
-function alertaPersonalizado(mensagem, icone) {
+function alertaPersonalizado(titulo, mensagem, icone, confirmButton) {
   Swal.fire({
     icon: icone,
-    title: 'Ops!',
+    title: titulo,
     text: mensagem,
-    confirmButtonText: 'Tentar novamente',
-    confirmButtonColor: '#ff4b4b',
+    confirmButtonText: confirmButton,
+    confirmButtonColor: '#5f5f5f',
+    showCancelButton: true,
+    cancelButtonColor: "#d33",
     background: '#f9f9f9',
     color: '#333'
   });
@@ -19,7 +23,7 @@ function alertaPersonalizado(mensagem, icone) {
 /**
  ### Exibe o alerta TOAST com mensagem customizada
  *- Icon => success, error, warning, info, question
- *- mensagem => Escreva a mensagem a ser mostrada
+ *- mensagem => Escreva a mensagem a ser exibida
  *- icone => escolha um Icon acima
  *- posicao => top, top-start, top-end, center, center-start, center-end, bottom, bottom-start, bottom-end
 */
@@ -40,5 +44,4 @@ function toastAlert(mensagem, icone, posicao)
     icon: icone,
     title: mensagem
   });
-  
 }

@@ -1,9 +1,5 @@
 <?php
 
-namespace App\Configs;
-
-use App\Configs\Conexao; 
-
 class Read extends Conexao
 {
 	private $Select;

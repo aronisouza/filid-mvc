@@ -15,19 +15,14 @@ require_once __DIR__ . '/functions.php'; // Carrega funções auxiliares
 
 loadEnv();
 
-use Core\Router; // Importa o namespace Core
-
-// Cria uma instância do Router com o caminho base
 $router = new Router();
 
-// Definindo rotas
-$router->addRoute('GET', '/', 'Controllers\HomeController', 'index');
-$router->addRoute('GET', '/users', 'Controllers\UserController', 'index'); // Listar usuários
-$router->addRoute('GET', '/users/create', 'Controllers\UserController', 'create'); // Criar usuário (formulário)
-$router->addRoute('POST', '/users/create', 'Controllers\UserController', 'store'); // Salvar usuário
-$router->addRoute('GET', '/users/edit/{id}', 'Controllers\UserController', 'edit'); // Editar usuário (formulário)
-$router->addRoute('POST', '/users/edit/{id}', 'Controllers\UserController', 'update'); // Atualizar usuário
-$router->addRoute('GET', '/users/delete/{id}', 'Controllers\UserController', 'delete'); // Excluir usuário
+// Carrega as rotas do arquivo de configuração
+$routes = require_once __DIR__ . '/Configs/routes.php';
 
-// Executando o roteador
+// Registra as rotas
+foreach ($routes as $route) {
+    $router->addRoute($route[0], $route[1], $route[2], $route[3]);
+}
+
 $router->dispatch();

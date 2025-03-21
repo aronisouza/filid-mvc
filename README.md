@@ -1,79 +1,271 @@
 # Filid-MVC
 
-Filid-MVC é um projeto desenvolvido utilizando o padrão **MVC (Model-View-Controller)**, projetado para facilitar o gerenciamento de dados e a interação com o usuário. Este repositório contém a implementação de um sistema modular, organizado e escalável.
+Filid-MVC é um framework PHP simples e eficiente. Foi desenvolvido para facilitar o desenvolvimento de aplicações web, oferecendo uma estrutura organizada e fácil de entender.
 
-## Índice
+## Estrutura do Projeto:
+É um projeto PHP seguindo o padrão MVC (Model-View-Controller)<br>
+Possui uma estrutura organizada com diretórios separados para Models, Views, Controllers, Core e Configs<br>
+Utiliza um sistema de autoload para carregamento automático de classes
+
+## Funcionalidades Principais:
+Sistema de gerenciamento de usuários (UserController)<br>
+Página inicial (HomeController)<br>
+Sistema de rotas e gerenciamento de URLs<br>
+Configuração via arquivo .env para variáveis de ambiente<br>
+
+## Tecnologias:
+PHP 7.4 ou superior<br>
+MySQL/MariaDB como banco de dados<br>
+Apache/Nginx como servidor web<br>
+HTML, CSS e JavaScript para frontend<br>
+
+## Organização:
+Separação clara de responsabilidades (MVC)<br>
+Sistema de logs para monitoramento<br>
+Arquivos de configuração separados<br>
+Sistema de funções auxiliares (functions.php)<br>
+
+## 🔒 Segurança:
+Utilização de variáveis de ambiente (.env)<br>
+Sistema de autenticação implementado<br>
+Tratamento de URLs inválidas<br>
+
+## 📋 Índice
 
 - [Visão Geral](#visão-geral)
-- [Funcionalidades](#funcionalidades)
-- [Tecnologias Utilizadas](#tecnologias-utilizadas)
-- [Pré-requisitos](#pré-requisitos)
+- [Estrutura do Projeto](#estrutura-do-projeto)
+- [Requisitos](#requisitos)
 - [Instalação](#instalação)
-- [Contribuição](#contribuição)
+- [Configuração](#configuração)
+- [Uso](#uso)
+- [Exemplos](#exemplos)
 - [Licença](#licença)
 
----
+## 🌟 Visão Geral
 
-## Visão Geral
+O Filid-MVC é um framework que implementa o padrão MVC, dividindo a aplicação em três camadas principais:
 
-O projeto Filid-MVC foi desenvolvido para demonstrar o uso do padrão MVC em aplicações web. Ele organiza o código em três camadas principais:
-- **Model**: Responsável pela lógica de negócios e interação com o banco de dados.
-- **View**: Interface de usuário, onde os dados são exibidos ao usuário final.
-- **Controller**: Gerencia as requisições entre a View e o Model, garantindo a separação de responsabilidades.
+- **Model**: Responsável pela lógica de negócios e interação com o banco de dados
+- **View**: Interface do usuário, onde os dados são exibidos
+- **Controller**: Gerencia as requisições entre a View e o Model
 
-Este projeto pode ser utilizado como base para o desenvolvimento de sistemas mais complexos, oferecendo uma estrutura clara e modular.
+## 📁 Estrutura do Projeto
 
----
+```
+filidmvc/
+├── Configs/           # Arquivos de configuração
+├── Controllers/       # Controladores da aplicação
+├── Core/             # Classes principais do framework
+├── Models/           # Modelos e lógica de negócios
+├── Public/           # Arquivos públicos (CSS, JS, imagens)
+├── Views/            # Arquivos de visualização
+│   ├── Components/   # Componentes reutilizáveis
+│   └── errors/       # Páginas de erro
+├── .env              # Variáveis de ambiente
+├── .htaccess        # Configurações do Apache
+├── autoload.php     # Carregador automático de classes
+├── functions.php    # Funções auxiliares
+└── index.php        # Ponto de entrada da aplicação
+```
 
-## Funcionalidades
+## ⚙️ Requisitos
 
-- **Gerenciamento de Dados**: Implementação de CRUD (Create, Read, Update, Delete) para manipulação de registros.
-- **Interface Amigável**: Views bem estruturadas para facilitar a interação do usuário.
-- **Modularidade**: Código organizado em pastas específicas para Models, Views e Controllers.
-- **Escalabilidade**: Facilidade para adicionar novas funcionalidades sem comprometer a estrutura existente.
+- PHP 7.4 ou superior
+- MySQL 5.7 ou superior
+- Apache/Nginx
+- mod_rewrite habilitado (Apache)
+- Composer (opcional)
 
----
+## 🚀 Instalação
 
-## Tecnologias Utilizadas
+1. Clone o repositório:
+```bash
+git clone https://github.com/seu-usuario/filid-mvc.git
+cd filid-mvc
+```
 
-- **Linguagem de Programação**: PHP
-- **Framework**: Não utiliza framework específico, mas segue o padrão MVC.
-- **Banco de Dados**: MySQL ou MariaDB (configurável).
-- **Frontend**: HTML, CSS e JavaScript básico.
-- **Servidor Web**: Apache ou Nginx.
+2. Configure seu servidor web (Apache/Nginx) para apontar para a pasta do projeto
 
----
+3. Copie o arquivo de exemplo de ambiente:
+```bash
+cp .env.example .env
+```
 
-## Pré-requisitos
+4. Configure as variáveis de ambiente no arquivo `.env`:
+```env
+DB_HOST=localhost
+DB_NAME=seu_banco
+DB_USER=seu_usuario
+DB_PASS=sua_senha
+```
 
-Antes de configurar e executar o projeto, certifique-se de que as seguintes ferramentas estão instaladas em sua máquina:
+## ⚙️ Configuração
 
-- **PHP** (versão 7.4 ou superior)
-- **MySQL** ou **MariaDB**
-- **Composer** (opcional, para gerenciamento de dependências)
-- **Servidor Web** (Apache ou Nginx)
+### Configuração do Banco de Dados
 
----
+Apenas adicione as suas informações no .env
+```env
+DB_HOST=localhost
+DB_NAME=seu_banco
+DB_USER=seu_usuario
+DB_PASS=sua_senha
+```
 
-## Instalação
+### Configuração do Apache (.htaccess)
 
-1. **Clone o Repositório**
+```apache
+RewriteEngine On
+Options All -Indexes
 
-   ```bash
-   git clone https://github.com/aronisouza/filid-mvc.git
-   cd filid-mvc
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php?url=$1 [QSA,L]
+```
 
-## Contribuição
-Contribuições são bem-vindas! Para contribuir com este projeto, siga os passos abaixo:
+## 💻 Uso
 
-1. Faça um fork deste repositório.
-2. Crie uma branch para sua feature (git checkout -b feature/nome-da-feature).
-3. Faça commit das suas alterações (git commit -m 'Adiciona nova feature').
-4. Envie suas alterações para o repositório remoto (git push origin feature/nome-da-feature).
-5. Abra um Pull Request detalhando suas alterações.
-6. Certifique-se de seguir as boas práticas de codificação e manter a consistência com o restante do projeto.
+### Criando um Controller
 
----
+```php
+<?php
+// Controllers/UserController.php
 
-## Licença
-Este projeto está licenciado sob a MIT License . Consulte o arquivo LICENSE para obter mais informações.
+class UserController extends Controller
+{
+    public function index()
+    {
+        // Lógica para listar usuários
+        $this->render('users/index');
+    }
+
+    public function create()
+    {
+        // Lógica para criar usuário
+        $this->render('users/create');
+    }
+}
+```
+
+### Criando um Model
+
+```php
+<?php
+// Models/User.php
+
+class User
+{
+    public function getUserById($id)
+    {
+        $read = new Read();
+        $read->ExeRead('users', "WHERE id={$id}");
+        return $read->getResult();
+    }
+}
+```
+
+### Criando uma View
+
+```php
+<!-- Views/users/index.php -->
+<div class="container">
+    <h1>Lista de Usuários</h1>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>Email</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach ($users as $user): ?>
+            <tr>
+                <td><?php echo $user['id']; ?></td>
+                <td><?php echo $user['nome']; ?></td>
+                <td><?php echo $user['email']; ?></td>
+            </tr>
+            <?php endforeach; ?>
+        </tbody>
+    </table>
+</div>
+```
+
+### Definindo Rotas
+
+As rotas podem ser definidas da seguinte maneiras:
+
+#### 1. Usando arquivo de configuração
+
+Arquivo `Configs/routes.php`:
+
+```php
+<?php
+return [
+    // Rotas básicas
+    ['GET', '/', 'HomeController', 'index'],
+    ['GET', '/users', 'UserController', 'index'],
+
+    // Rotas com parâmetros
+    ['GET', '/users/edit/{id}', 'UserController', 'edit'],
+    ['POST', '/users/edit/{id}', 'UserController', 'update'],
+
+    // Rotas para criação
+    ['GET', '/users/create', 'UserController', 'create'],
+    ['POST', '/users/create', 'UserController', 'store'],
+
+    // Rota para deletar
+    ['GET', '/users/delete/{id}', 'UserController', 'delete'],
+];
+```
+
+## 🔒 Segurança
+
+O framework inclui várias medidas de segurança:
+
+- Proteção contra CSRF
+- Headers de segurança configurados
+- Validação de dados
+- Escape de saída HTML
+
+### Exemplo de Proteção CSRF
+
+```php
+// No formulário
+<form method="POST" action="/users/create">
+    <input type="hidden" name="csrf_token" value="<?php echo $this->generateCsrfToken(); ?>">
+    <!-- campos do formulário -->
+</form>
+
+// No controller
+public function store()
+{
+    if ($this->validateCsrfToken($_POST['csrf_token'])) {
+        // Processar dados
+    }
+}
+```
+
+## 🎨 Personalização
+
+### Adicionando CSS e JavaScript
+
+```php
+<!-- Views/template.php -->
+<head>
+    <!-- CSS -->
+    <link rel="stylesheet" href="/Public/Css/bootstrap.min.css">
+    <link rel="stylesheet" href="/Public/Css/custom.css">
+    
+    <!-- JavaScript -->
+    <script src="/Public/Js/jquery-3.6.4.min.js"></script>
+    <script src="/Public/Js/bootstrap.bundle.min.js"></script>
+</head>
+```
+
+## 📄 Licença
+
+Este projeto está licenciado sob a MIT License - veja o arquivo [LICENSE](LICENSE) para detalhes.
+
+## 📞 Suporte
+
+Se você encontrar algum problema ou tiver sugestões, por favor abra uma issue no GitHub.

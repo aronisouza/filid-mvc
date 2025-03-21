@@ -1,5 +1,4 @@
 <?php
-namespace Core;
 
 class Controller {
     protected function render($view, $data = []) {
@@ -7,17 +6,17 @@ class Controller {
         extract($data);
 
         // Define o caminho para a view
-        $viewPath = siteUrl() . "/../Views/{$view}.php";
+        $viewPath = __DIR__ . "/../Views/{$view}.php";
 
         // Verifica se a view existe
         if (file_exists($viewPath)) {
-            // Define o conteúdo dinâmico para ser incluído na template
+            // Define a variável $content com o caminho da view
             $content = $viewPath;
-
-            // Carrega a template principal
-            require_once siteUrl() . "/../Views/template.php";
+            // Carrega o template
+            require_once __DIR__ . "/../Views/template.php";
         } else {
-            $viewPath = siteUrl() . "/../Views/erro404.php";
+            // Se a view não existir, carrega a página de erro 404
+            require_once __DIR__ . "/../Views/errors/404.php";
         }
     }
     protected function generateCsrfToken() {

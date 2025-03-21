@@ -1,7 +1,5 @@
 <?php
 
-namespace App\Configs;
-
 require_once ("./functions.php");
 
 class Conexao

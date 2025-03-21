@@ -1,10 +1,5 @@
 <?php
 
-namespace Controllers;
-
-use Core\Controller;
-use Models\UserModel;
-
 class UserController extends Controller
 {
     public function index()

@@ -34,6 +34,64 @@ function logError($message)
 }
 
 
+
+/**
+ ** Exibe o alerta com mensagem customizada
+ *- Icones => success, error, warning, info, question
+ *- titulo => Titulo da janela
+ *- mensagem => Escreva a mensagem a ser exibida
+ *- icone => escolha um Icon acima
+ *- confirmButton => Texto do Botão
+*/
+function fldAlertaPersonalizado($titulo, $mensagem, $icone, $confirmButton)
+{
+  echo "
+  <script>
+    Swal.fire({
+      icon: '$icone',
+      title: '$titulo',
+      text: '$mensagem',
+      confirmButtonText: '$confirmButton',
+      confirmButtonColor: '#5f5f5f',
+      showCancelButton: true,
+      cancelButtonColor: '#d33',
+      background: '#f9f9f9',
+      color: '#333'
+    });
+  </script>
+  ";
+}
+
+/**
+ ** Exibe o alerta TOAST com mensagem customizada
+ *- Icon => success, error, warning, info, question
+ *- mensagem => Escreva a mensagem a ser exibida
+ *- icone => escolha um Icon acima
+ *- posicao => top, top-start, top-end, center, center-start, center-end, bottom, bottom-start, bottom-end
+*/
+function fldToastAlert($mensagem, $icone, $posicao)
+{
+  echo "
+  <script>
+    const Toast = Swal.mixin({
+      toast: true,
+      position: '$posicao',
+      showConfirmButton: false,
+      timer: 3500,
+      timerProgressBar: true,
+      didOpen: (toast) => {
+        toast.onmouseenter = Swal.stopTimer;
+        toast.onmouseleave = Swal.resumeTimer;
+      }
+    });
+    Toast.fire({
+      icon: '$icone',
+      title: '$mensagem'
+    });
+  </script>
+  ";
+}
+
 // Apenas para verificar alguns arrays formatado
 function fldPre($string)
 {

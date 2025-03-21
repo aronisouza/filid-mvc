@@ -21,7 +21,7 @@
     }
 
     .rocket.fly {
-        transform: translateY(-100vh) rotate(45deg);
+        transform: translateY(-100vh) rotate(50deg);
     }
 
     .btn-primary {

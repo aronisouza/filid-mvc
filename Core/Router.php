@@ -1,5 +1,4 @@
 <?php
-namespace Core;
 
 class Router {
     private $routes = [];
@@ -9,16 +8,20 @@ class Router {
         $this->basePath = rtrim($basePath, '/');
     }
 
-    public function addRoute($method, $uri, $controller, $action) {
+    public function addRoute($method, $uri, $controller, $action) { 
+        
         $this->routes[] = [
             'method' => $method,
             'uri' => $uri,
             'controller' => $controller,
             'action' => $action
         ];
+        
+        
     }
 
     public function dispatch() {
+
         $requestMethod = $_SERVER['REQUEST_METHOD'];
 
         // Obtém a URI da query string ou define como '/'
